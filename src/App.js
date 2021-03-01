@@ -1,23 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import Player from './components/Players/Player';
+import Cart from './components/cart/Cart';
 
 function App() {
+  
+ const [players, setPlayers] = useState([]);
+ const [cart, setCart] = useState([]);
+
+
+ useEffect(()=>{
+   fetch('http://www.json-generator.com/api/json/get/bVeCNTHgZe?indent=2')
+   .then(res => res.json())
+   .then(data=>setPlayers(data))
+   .catch(error => console.log(error))
+ }, [])
+  
+ const handleAddPlayer = (player) =>{
+   
+  const newCart = [...cart, player];
+  setCart(newCart);
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Total player:{players.length}</h1>
+      <h3>Player Added: {cart.length}</h3>
+      <Cart cart = {cart}></Cart>
+      <ul>
+        {
+          players.map(player =><Player player = {player} handleAddPlayer = {handleAddPlayer}></Player> )
+        }
+      </ul>
     </div>
   );
 }
