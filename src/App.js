@@ -12,7 +12,7 @@ function App() {
 
 
  useEffect(()=>{
-   fetch('http://www.json-generator.com/api/json/get/cpUmxDOYya?indent=2')
+   fetch('https://www.json-generator.com/api/json/get/cpUmxDOYya?indent=2')
    .then(res => res.json())
    .then(data=>setPlayers(data))
    .catch(error => console.log(error))
