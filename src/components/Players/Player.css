@@ -1,0 +1,21 @@
+.card{
+    background-color:lightsalmon;
+    margin:0 auto;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow:10px 10px 10px gray;
+    margin-bottom:50px;
+    margin:"10px";
+    margin-top:"10px";
+}
+
+.card img{
+    padding-top:10px;
+    height: 200px;
+}
+.card button{
+    margin-bottom: 10px;
+}
